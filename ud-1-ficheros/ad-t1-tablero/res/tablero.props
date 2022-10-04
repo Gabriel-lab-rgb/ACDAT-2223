@@ -19,8 +19,8 @@
     cols=4
 
     # Fichas
-    value1=o
-    value2=x
+    value1=⭐
+    value2=❌
 
     Representación generada:
     +-----------------+

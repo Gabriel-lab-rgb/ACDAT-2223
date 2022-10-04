@@ -55,23 +55,7 @@ public class TableroJuegoApp {
                 tablero.mostrarFichas();
             }
 
-            /*Properties props = new Properties();
-            props.load(new FileReader(f));
-            TableroJuego tablero = new TableroJuego(Integer.parseInt(props.getProperty("rows")),Integer.parseInt(props.getProperty("cols")));
-            /*System.out.println("filas " + tablero.getNfilas());*/
-            /*array.add(props.getProperty("value1").charAt(0));
-            array.add(props.getProperty("value2").charAt(0));
-            Ficha[][] ficha = new Ficha[tablero.getNfilas()][tablero.getNcolumnas()];
-            for (int i = 0; i < tablero.getNfilas(); i++){
-                for (int j = 0; j < tablero.getNcolumnas(); j++){
-                    Character valor=ValorAleatorio(array);
-                    /*System.out.println("valor " + valor);*/
-                   /* ficha[i][j] = new Ficha(valor);
 
-                }
-            }
-
-                    */
     }
 
 
