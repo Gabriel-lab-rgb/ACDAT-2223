@@ -1,6 +1,10 @@
 package iesmm.ad.t1;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.ArrayList;
 
 public class TableroJuego {
 	private int nfilas;
@@ -12,38 +16,51 @@ public class TableroJuego {
 		this.ncolumnas =ncolumnas;
 	}
 
-	public int getNfilas() {
-		return nfilas;
-	}
+    public TableroJuego(File f) {
 
-	public void setNfilas(int nfilas) {
-		this.nfilas = nfilas;
-	}
+        ArrayList<Character> array = new ArrayList();
 
-	public int getNcolumnas() {
-		return ncolumnas;
-	}
+        Properties props = new Properties();
+        try {
+            props.load(new FileReader(f));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        nfilas = Integer.parseInt(props.getProperty("rows"));
+        ncolumnas = Integer.parseInt(props.getProperty("cols"));
 
-	public void setNcolumnas(int ncolumnas) {
-		this.ncolumnas = ncolumnas;
-	}
+        array.add(props.getProperty("value1").charAt(0));
+        array.add(props.getProperty("value2").charAt(0));
 
-	public TableroJuego(Ficha[][] tablero) {
-		this.tablero = tablero;
-	}
+        Ficha[][] ficha = new Ficha[nfilas][ncolumnas];
+        for (int i = 0; i < nfilas; i++) {
+            for (int j = 0; j < ncolumnas; j++) {
+                char valor = ValorAleatorio(array);
+                /*System.out.println("valor " + valor);*/
+                ficha[i][j] = new Ficha(valor);
+                this.tablero=ficha;
 
+            }
+        }
+    }
+    //Metodo para obtener un valor aleatorio
+        public static Character ValorAleatorio(ArrayList <Character> lista) {
 
+            int valor = (int) (Math.random() * lista.size());
+           /* System.out.println("Valor: " + lista.get(valor));*/
+            return lista.get(valor);
 
-	public void setTablero(Ficha[][] tablero) {
-		this.tablero = tablero;
-	}
+        }
 
-	public TableroJuego(File f) {
+        //Metodo para mostrar la tabla.
+        public void mostrarFichas(){
 
-	}
-	
-	@Override
-	public String toString() {
-		return tablero.toString();
-	}
+        for(int i=0;i<this.tablero.length;i++){
+            System.out.println("");
+            for(int j=0;j<this.tablero[i].length;j++){
+            System.out.print(" "+ this.tablero[i][j].toString() +" ");
+            }
+        }
+        }
+
 }

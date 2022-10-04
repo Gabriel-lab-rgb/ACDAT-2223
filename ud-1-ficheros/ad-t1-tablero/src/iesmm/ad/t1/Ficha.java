@@ -16,4 +16,8 @@ public class Ficha {
         this.caracter = caracter;
     }
 
+    @Override
+    public String toString() {
+        return String.valueOf(caracter);
+    }
 }
