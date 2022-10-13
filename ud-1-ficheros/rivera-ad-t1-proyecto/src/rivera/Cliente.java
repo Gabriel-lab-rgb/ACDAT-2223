@@ -1,3 +1,5 @@
+package rivera;
+
 import java.io.Serializable;
 
 public class Cliente implements Serializable {
@@ -8,6 +10,7 @@ public class Cliente implements Serializable {
 		this.nombre = nombre;
 		this.telefono = telefono;
 	}
+
 
 	public String getNombre() {
 		return nombre;
@@ -24,4 +27,21 @@ public class Cliente implements Serializable {
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
+
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Cliente cliente = (Cliente) o;
+
+		return nombre.equals(cliente.nombre);
+	}
+
+	@Override
+	public int hashCode() {
+		return nombre.hashCode();
+	}
 }
+
