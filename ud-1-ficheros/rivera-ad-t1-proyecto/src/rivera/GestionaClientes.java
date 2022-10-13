@@ -72,7 +72,7 @@ public class GestionaClientes {
                     ObjectInputStream client = new ObjectInputStream(fi);
                     Cliente cliente = (Cliente) client.readObject();
                     //Imprimimos el objeto leido en consola
-                    System.out.println(cliente.getTelefono() + "  " + cliente.getNombre());
+                    System.out.println(cliente.getTelefono() + "  " + cliente.getNombre().toUpperCase());
                 }
 //Cerramos el objeto fi y client
                 fi.close();
