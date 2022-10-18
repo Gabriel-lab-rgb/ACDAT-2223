@@ -74,7 +74,7 @@ public class GestionaClientes {
                     //Imprimimos el objeto leido en consola
                     System.out.println(cliente.getTelefono() + "  " + cliente.getNombre().toUpperCase());
                 }
-//Cerramos el objeto fi y client
+//Cerramos el objeto fi
                 fi.close();
 
             }catch (IOException | ClassNotFoundException e) {
@@ -192,7 +192,6 @@ public class GestionaClientes {
                 throw new RuntimeException(e);
 
         }
-
 
     }
 

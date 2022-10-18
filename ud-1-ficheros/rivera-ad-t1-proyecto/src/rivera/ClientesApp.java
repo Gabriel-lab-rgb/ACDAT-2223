@@ -25,7 +25,6 @@ public class ClientesApp {
         File f2=new File("res" +File.separator + "clientes2.dat");
         gestion.mostrarFichero(f);
         gestion.mostrarFichero(f2);
-
         boolean c= gestion.ordenarPorNombre(f);
         boolean c2= gestion.ordenarPorNombre(f2);
         if(c){
@@ -38,7 +37,6 @@ public class ClientesApp {
         }else{
             System.out.println("Fallo al generar el fichero clientes2.tmp");
         }
-
         gestion.duplicados(f,f2,"res" +File.separator + "clientes.dat");
 
 
