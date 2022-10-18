@@ -12,7 +12,7 @@ public class GestionarSAX {
 	private ManejadorVuelosSax handler;
 
 	public void imprimirNodos() {
-		System.out.println(handler.getXMLResult());
+		System.out.println(handler.getXmlResult());
 	}
 
 	public int abrir_XML_SAX(File fichero) {
