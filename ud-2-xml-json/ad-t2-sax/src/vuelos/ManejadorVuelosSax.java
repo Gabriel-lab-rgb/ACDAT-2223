@@ -10,7 +10,7 @@ public class ManejadorVuelosSax extends DefaultHandler {
 
     private String xmlResult="";
     private int contadorVuelos=0;
-    private ArrayList<String> lista = new ArrayList<>();
+
 
 
     public String getXmlResult() {
@@ -22,7 +22,7 @@ public class ManejadorVuelosSax extends DefaultHandler {
      */
     @Override
     public void startDocument() throws SAXException {
-        xmlResult += "COMIENZO DEL DOCUMENTO XML\n";
+
     }
 
     /**
@@ -30,8 +30,6 @@ public class ManejadorVuelosSax extends DefaultHandler {
      */
     @Override
     public void endDocument() throws SAXException {
-
-        xmlResult += "FIN DEL DOCUMENTO XML\n";
 
     }
 
@@ -48,9 +46,7 @@ public class ManejadorVuelosSax extends DefaultHandler {
 
     }
 
-    public ArrayList<String> getLista() {
-        return lista;
-    }
+
 
     /**
      * FIN DEL ELEMENTO
@@ -60,15 +56,14 @@ public class ManejadorVuelosSax extends DefaultHandler {
             throws SAXException {
 
         switch (elemento) {
-
             case "origen":
-                System.out.println("      Origen:" + lista.get(0));
+                System.out.println("      Origen:" + xmlResult);
                 break;
             case "destino":
-                System.out.println("      Destino: " + lista.get(0));
+                System.out.println("      Destino: " + xmlResult);
                 break;
         }
-        lista.clear();
+        xmlResult="";
     }
 
     /**
@@ -90,7 +85,7 @@ public class ManejadorVuelosSax extends DefaultHandler {
             throws SAXException {
         // OPCIÓN 1
 
-        lista.add(new String(cadena, posinicio, longitud));
+        xmlResult += new String(cadena, posinicio, longitud);
 
        /* xmlResult += "VALOR: " + new String(cadena, posinicio, longitud) + "\n";*/
 
