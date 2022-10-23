@@ -51,7 +51,7 @@ public class GestionarSAX {
 		if (MyParser.abrir_XML_SAX(new File("res" + File.separator + "vuelos.xml")) == 0) {
 			// Si el documento se ha parseado correctamente
 			// Mostrar lo procesado por el parser
-			MyParser.imprimirNodos();
+			/*MyParser.imprimirNodos();*/
 
 		}
 	}
