@@ -1,19 +1,16 @@
-package vuelos;
+package Ej3;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.util.ArrayList;
+public class ManejadorSAX extends DefaultHandler {
 
-public class ManejadorVuelosSax extends DefaultHandler {
-
-    private String xmlResult = "";
-    private int contadorVuelos = 0;
-
+    private String XmlResult = "";
+    private int contador=0;
 
     public String getXmlResult() {
-        return xmlResult;
+        return XmlResult;
     }
 
     /**
@@ -29,7 +26,8 @@ public class ManejadorVuelosSax extends DefaultHandler {
      */
     @Override
     public void endDocument() throws SAXException {
-        System.out.println("Nº de vuelos " + contadorVuelos);
+
+        System.out.print("Numeros de empleados: " + contador);
     }
 
     /**
@@ -38,11 +36,9 @@ public class ManejadorVuelosSax extends DefaultHandler {
     @Override
     public void startElement(String uri, String nombre, String elemento,
                              Attributes atts) throws SAXException {
-
-        if (elemento.equals("Vuelo")) {
-            System.out.println("Vuelo " + (contadorVuelos = contadorVuelos + 1) + ":");
+        if(elemento.equals("Empleado")){
+            contador=contador +1;
         }
-
     }
 
 
@@ -54,14 +50,12 @@ public class ManejadorVuelosSax extends DefaultHandler {
             throws SAXException {
 
         switch (elemento) {
-            case "origen":
-                System.out.println("\tOrigen:" + xmlResult);
-                break;
-            case "destino":
-                System.out.println("\tDestino: " + xmlResult);
+            case "Empleado":
+                System.out.print(XmlResult + "\n");
+                XmlResult="";
                 break;
         }
-        xmlResult = "";
+
     }
 
     /**
@@ -78,13 +72,9 @@ public class ManejadorVuelosSax extends DefaultHandler {
             throws SAXException {
         // OPCIÓN 1
 
-        xmlResult += new String(cadena, posinicio, longitud);
+        XmlResult += new String(cadena, posinicio, longitud) + " ";
 
-        /* xmlResult += "VALOR: " + new String(cadena, posinicio, longitud) + "\n";*/
 
-        // OPCIÓN 2
-        // for (int i = start; i < length + start; i++)
-        // result += Character.toString(cadena[i]);
     }
 
 
