@@ -1,4 +1,5 @@
-package Ej3;
+package Ej4;
+
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -7,7 +8,7 @@ import org.xml.sax.helpers.DefaultHandler;
 public class ManejadorSAX extends DefaultHandler {
 
     private String XmlResult = "";
-    private int contador=0;
+   private String cadena="";
 
     public String getXmlResult() {
         return XmlResult;
@@ -19,7 +20,6 @@ public class ManejadorSAX extends DefaultHandler {
     @Override
     public void startDocument() throws SAXException {
 
-        System.out.print("Documento parseado correctamente" +"\n");
     }
 
     /**
@@ -28,8 +28,10 @@ public class ManejadorSAX extends DefaultHandler {
     @Override
     public void endDocument() throws SAXException {
 
-        System.out.print("Numeros de empleados: " + contador);
+    }
 
+    public String getCadena() {
+        return cadena;
     }
 
     /**
@@ -38,9 +40,9 @@ public class ManejadorSAX extends DefaultHandler {
     @Override
     public void startElement(String uri, String nombre, String elemento,
                              Attributes atts) throws SAXException {
-        if(elemento.equals("Empleado")){
-            contador=contador +1;
-        }
+
+
+
     }
 
 
@@ -51,13 +53,18 @@ public class ManejadorSAX extends DefaultHandler {
     public void endElement(String uri, String nombre, String elemento)
             throws SAXException {
 
-        switch (elemento) {
-            case "Empleado":
-                System.out.print(XmlResult + "\n");
-                XmlResult="";
-                break;
-        }
 
+        switch (elemento) {
+
+            case "username":
+                cadena+=XmlResult + ":";
+                break;
+            case "password":
+                cadena+=XmlResult + "\n";
+                break;
+
+        }
+        XmlResult = "";
     }
 
     /**
@@ -74,7 +81,7 @@ public class ManejadorSAX extends DefaultHandler {
             throws SAXException {
         // OPCIÓN 1
 
-        XmlResult += new String(cadena, posinicio, longitud) + " ";
+        XmlResult += new String(cadena, posinicio, longitud);
 
 
     }
@@ -82,3 +89,4 @@ public class ManejadorSAX extends DefaultHandler {
 
 
 }
+

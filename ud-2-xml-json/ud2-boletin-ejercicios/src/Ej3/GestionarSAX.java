@@ -8,7 +8,7 @@ import java.io.File;
 
 public class GestionarSAX {
 	// Objeto Handler que almacena el XML seleccionado durante el recorrido.
-	private Ej3.ManejadorSAX handler;
+	private ManejadorSAX handler;
 
 	public void imprimirNodos() {
 		System.out.println(handler.getXmlResult());
