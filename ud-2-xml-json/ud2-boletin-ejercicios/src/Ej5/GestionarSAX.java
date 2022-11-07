@@ -1,6 +1,8 @@
-package Ej4;
+package Ej5;
 
 
+
+import Ej5.ManejadorSAX;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.SAXParser;
@@ -9,14 +11,14 @@ import java.io.*;
 
 public class GestionarSAX {
     // Objeto Handler que almacena el XML seleccionado durante el recorrido.
-    private Ej4.ManejadorSAX handler;
+    private ManejadorSAX handler;
 
     public String imprimirNodos() {
-        return handler.getCadena();
+        return handler.getXmlresult();
     }
     public void  CrearFichero() throws IOException {
 
-        FileWriter fichero = new FileWriter("res" + File.separator + "usuarios.txt");
+        FileWriter fichero = new FileWriter("res" + File.separator + "vuelos.html");
         fichero.write(imprimirNodos());
         fichero.close();
     }
@@ -31,7 +33,7 @@ public class GestionarSAX {
 
             // Se crea un instancia del manejador que será el que recorra el
             // documento XML secuencialmente
-            handler = new Ej4.ManejadorSAX();
+            handler = new ManejadorSAX();
 
             // Se da la salida al parser para que comience a manejar el
             // documento XML. Esto recorrerá secuencialmente el documento XML

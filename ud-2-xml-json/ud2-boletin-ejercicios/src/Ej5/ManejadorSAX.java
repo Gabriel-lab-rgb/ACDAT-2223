@@ -1,4 +1,4 @@
-package Ej4;
+package Ej5;
 
 
 import org.xml.sax.Attributes;
@@ -11,8 +11,10 @@ public class ManejadorSAX extends DefaultHandler {
     private String cadena = "";
     private String xmlresult ="";
 
-    public String getCadena() {
-        return cadena;
+
+
+    public String getXmlresult() {
+        return xmlresult;
     }
 
     /**
@@ -20,6 +22,23 @@ public class ManejadorSAX extends DefaultHandler {
      */
     @Override
     public void startDocument() throws SAXException {
+
+        xmlresult +="<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "<head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "    <title>Listado de vuelos</title>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<h1>Listado de salida de vuelos</h1>\n"  +
+                " <table border=\"1\">\n " +
+                "<tr>\n" +
+                "<th>Origen</th>\n" +
+                "<th>Destino</th>\n" +
+                "</tr>\n" ;
+
 
     }
 
@@ -29,6 +48,9 @@ public class ManejadorSAX extends DefaultHandler {
     @Override
     public void endDocument() throws SAXException {
 
+        xmlresult += "</table>\n"
+                +"</body>\n" +
+                "</html>";
     }
 
     /**
@@ -53,13 +75,13 @@ public class ManejadorSAX extends DefaultHandler {
 
         switch (elemento) {
 
-            case "username":
-               //flag=true;
-                xmlresult += cadena + ":";
-                break;
-            case "password":
+            case "origen":
                 //flag=true;
-                xmlresult += cadena + "\n";
+                xmlresult += "<tr><td>"+cadena+"</td>\n";
+                break;
+            case "destino":
+                //flag=true;
+                xmlresult += "<td>"+cadena+"</td>\n" +"</tr>";
                 break;
 
         }
@@ -93,4 +115,5 @@ public class ManejadorSAX extends DefaultHandler {
 
 
 }
+
 
