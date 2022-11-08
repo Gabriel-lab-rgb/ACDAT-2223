@@ -81,7 +81,7 @@ public class ManejadorSAX extends DefaultHandler {
                 break;
             case "destino":
                 //flag=true;
-                xmlresult += "<td>"+cadena+"</td>\n" +"</tr>";
+                xmlresult += "<td>"+cadena+"</td>\n" +"</tr>\n";
                 break;
 
         }

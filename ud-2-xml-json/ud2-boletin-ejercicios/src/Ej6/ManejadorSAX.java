@@ -9,7 +9,9 @@ public class ManejadorSAX extends DefaultHandler {
 
     private boolean flag;
     private String cadena = "";
+
     private String xmlresult ="";
+    private String html="";
 
 
 
@@ -33,7 +35,7 @@ public class ManejadorSAX extends DefaultHandler {
                 "</head>\n" +
                 "<body>\n" +
                 "<h1>Catalogo de videojuegos clasico</h1>\n"  +
-                " <table border=\"1\">\n ";
+                "<table border=\"1\">\n";
     }
 
     /**
@@ -42,7 +44,7 @@ public class ManejadorSAX extends DefaultHandler {
     @Override
     public void endDocument() throws SAXException {
 
-        xmlresult += "</table>\n"
+        xmlresult += "</tr></table>\n"
                 +"</body>\n" +
                 "</html>";
     }
@@ -54,6 +56,9 @@ public class ManejadorSAX extends DefaultHandler {
     public void startElement(String uri, String nombre, String elemento,
                              Attributes atts) throws SAXException {
 
+        if(elemento.equals("juegomesa")){
+            flag=false;
+        }
 
 
     }
@@ -67,26 +72,42 @@ public class ManejadorSAX extends DefaultHandler {
             throws SAXException {
 
 
-        switch (elemento) {
+    switch (elemento) {
 
-            case "caratula":
-                xmlresult += "<img src=\""+cadena+ "\">\n";
-                break;
-            case "titulo":
+        case "juegomesa":
+            flag=true;
+            break;
+        case "caratula":
 
-                xmlresult += "<h3>"+cadena+"</h3>\n";
-                break;
-            case "plataforma":
+            xmlresult += "<td>\n<img src=\""+cadena+ "\">\n";
 
-                xmlresult += "<p>Consola:"+cadena+"</p>\n";
-                break;
-            case "stock":
-                xmlresult += "<p>Stock actual:"+cadena+"</p>";
-                break;
+            break;
+        case "titulo":
+            //flag=false;
+    if(flag){
+    html+= "<h3>"+cadena+"</h3>\n";
+}
 
-        }
-        cadena = "";
+            break;
+        case "plataforma":
+            //flag=false;
+            html += "<p>Consola:"+cadena+"</p>\n";
+            break;
+        case "stock":
+            if(flag){
+                xmlresult += html + "<p>Stock actual:"+cadena+"</p>";
+                xmlresult +="</td>\n";
+                html="";
+            }
+
+            break;
+
     }
+
+    cadena = "";
+}
+
+
 
     /**
      * CADENA DE CARACTERES (VALOR DEL CONTENIDO)
@@ -102,7 +123,10 @@ public class ManejadorSAX extends DefaultHandler {
             throws SAXException {
         // OPCIÓN 1
 
-        this.cadena += new String(cadena, posinicio, longitud);
+        //if(flag) {
+            this.cadena += new String(cadena, posinicio, longitud);
+            //flag=false;
+       // }
 
         // OPCIÓN 2
         /*if(flag){
