@@ -14,54 +14,40 @@ public class CochesXPathJaxe {
 
         if (xml.exists())
             try {
-
-
-                // EJEMPLO 1
-                System.out.println("*************************");
-                String exp1 = "//juegomesa";
-                System.out.println(exp1);
-                ArrayList<Element> lista1 = (ArrayList<Element>) ProcesadorXPath.consultaJaxen(xml, exp1);
-
-                // Recorrido de la lista de elementos seleccionados
+                //  1
+                System.out.println("Juegos de mesa existentes");
+                String exp = "//juegomesa";
+                ArrayList<Element> lista1 = (ArrayList<Element>) ProcesadorXPath.consultaJaxen(xml, exp);
                 for (Element elemento : lista1)
                     System.out.println(elemento.asXML());
-                // EJEMPLO 2
+                //  2
                 System.out.println("*************************");
-                String exp = "//videojuego[stock>10]/titulo";
-                System.out.println(exp);
-                ArrayList<Element> lista = (ArrayList<Element>) ProcesadorXPath.consultaJaxen(xml, exp);
-
-              // Recorrido de la lista de elementos seleccionados
+                System.out.println("Titulos de los videojuegos cuyo stock sea superior a 10 unidades");
+                String exp2 = "//videojuego[stock>10]/titulo";
+                ArrayList<Element> lista = (ArrayList<Element>) ProcesadorXPath.consultaJaxen(xml, exp2);
                 for (Element elemento : lista)
                     System.out.println(elemento.asXML());
-
-                // EJEMPLO 3
+                // 3
                 System.out.println("*************************");
-                String exp2 = "count(//videojuego[count(captura)=0])";
-                System.out.println(exp2);
-               // ArrayList<Element> lista2 = (ArrayList<Element>) ProcesadorXPath.consultaJaxen(xml, exp2);
-                Number numero =  ProcesadorXPath.consultaJaxenCount(xml, exp2);
-                System.out.print(numero);
+                System.out.println("Contabilizar el número de videojuegos que no tienen aún capturas de pantalla");
+                String exp3 = "count(//videojuego[not(captura)])";
+                Number numero =  ProcesadorXPath.consultaJaxenCount(xml, exp3);
+                System.out.print(numero +"\n");
 
-                //EJEMPLO 4
-
+                // 4
                 System.out.println("*************************");
+
+                System.out.println("Captura de pantalla del titulo de videojuegos \"MARIO BROS\" ");
                 String exp4 = "//videojuego[titulo='MARIO BROS']/imagenes/captura";
-                System.out.println(exp4);
                 ArrayList<Element> lista4 = (ArrayList<Element>) ProcesadorXPath.consultaJaxen(xml, exp4);
-
-                // Recorrido de la lista de elementos seleccionados
                 for (Element elemento : lista4)
                     System.out.println(elemento.asXML());
 
-                //EJEMPLO 5
-
+                // 5
                 System.out.println("*************************");
-                String exp3 = "//videojuego[plataforma='NES' and stock<=15]/titulo";
-                System.out.println(exp3);
-                ArrayList<Element> listaR = (ArrayList<Element>) ProcesadorXPath.consultaJaxen(xml, exp3);
-
-                // Recorrido de la lista de elementos seleccionados
+                System.out.println("Titulos de los videojuegos que sean de la plataforma \"NES\" y tengan un stock de,al menos ,15 unidades");
+                String exp5 = "//videojuego[plataforma='NES' and stock<=15]/titulo";
+                ArrayList<Element> listaR = (ArrayList<Element>) ProcesadorXPath.consultaJaxen(xml, exp5);
                 for (Element elemento : listaR)
                     System.out.println(elemento.asXML());
 
