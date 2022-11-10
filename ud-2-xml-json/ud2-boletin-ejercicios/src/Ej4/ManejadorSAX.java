@@ -11,8 +11,8 @@ public class ManejadorSAX extends DefaultHandler {
     private String cadena = "";
     private String xmlresult ="";
 
-    public String getCadena() {
-        return cadena;
+    public String getXmlresult() {
+        return xmlresult;
     }
 
     /**

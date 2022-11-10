@@ -12,7 +12,7 @@ public class GestionarSAX {
     private Ej4.ManejadorSAX handler;
 
     public String imprimirNodos() {
-        return handler.getCadena();
+        return handler.getXmlresult();
     }
     public void  CrearFichero() throws IOException {
 
