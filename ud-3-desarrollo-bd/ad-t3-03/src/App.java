@@ -90,11 +90,10 @@ public class App {
                                 Articulo articulo = dao.obtenerPorId(Integer.parseInt(id));
                                 if (articulo != null) {
                                     System.out.println(articulo.getNombre());
-                                    continuar = false;
                                 } else {
                                     System.out.println("No se ha encontrado el articulo con ese id");
-                                    continuar = false;
                                 }
+                                continuar = false;
                             } catch (NumberFormatException excepcion) {
                                 continuar = true;
                                 System.out.println("El id introducido no es un número");
