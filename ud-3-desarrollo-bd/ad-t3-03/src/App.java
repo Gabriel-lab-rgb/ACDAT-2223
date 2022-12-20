@@ -109,6 +109,6 @@ public class App {
                 default:
                     System.out.println("Opción errónea");
             }
-        } while (op != 6);
+        } while (op != 7);
     }
 }

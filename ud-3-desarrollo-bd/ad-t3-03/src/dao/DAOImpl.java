@@ -81,7 +81,7 @@ public class DAOImpl implements DAO {
     public Articulo obtenerPorId(int id) {
         Connection c;
         Articulo articulo = null;
-        boolean encontrado = false;
+
 
         try {
             c = Conexion.getConnection();
@@ -101,10 +101,9 @@ public class DAOImpl implements DAO {
 
                 articulo = new Articulo(id, codigo, nombre, descripcion, existencia, precio, categoria_articulo);
                 Conexion.close();
-                return articulo;
             } else {
                 Conexion.close();
-                return null;
+
             }
 
         } catch (SQLException e) {
@@ -113,7 +112,7 @@ public class DAOImpl implements DAO {
             throw new RuntimeException(e);
         }
 
-
+        return articulo;
     }
 
     @Override
