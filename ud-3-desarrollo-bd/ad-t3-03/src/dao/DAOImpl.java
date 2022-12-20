@@ -100,12 +100,9 @@ public class DAOImpl implements DAO {
                 Integer categoria_articulo = rs.getInt("idcategoria");
 
                 articulo = new Articulo(id, codigo, nombre, descripcion, existencia, precio, categoria_articulo);
-                Conexion.close();
-            } else {
-                Conexion.close();
 
             }
-
+            Conexion.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
