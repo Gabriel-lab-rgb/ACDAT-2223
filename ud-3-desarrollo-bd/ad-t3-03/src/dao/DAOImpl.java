@@ -102,6 +102,7 @@ public class DAOImpl implements DAO {
                 articulo = new Articulo(id, codigo, nombre, descripcion, existencia, precio, categoria_articulo);
 
             }
+
             Conexion.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
